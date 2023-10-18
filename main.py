@@ -35,8 +35,11 @@ def start_environment(env_dir, port):
 
 # Функция для остановки окружения
 def stop_environment(env_dir):
-    shutil.rmtree(env_dir)
-    print(f'Окружение {env_dir} остановлено.')
+    if os.path.exists(env_dir):
+        shutil.rmtree(env_dir)
+        print(f'Окружение {env_dir} остановлено.')
+    else:
+        print(f'Окружение {env_dir} не существует.')
 
 # Функция для остановки всех окружений
 def stop_all_environments():
